@@ -36,12 +36,13 @@
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
 		<script>
-			if (Backbone && _ && $) {
+			if (_ && $) {
 			  document.getElementById("noscript").style.display = "none";
 			  document.getElementById("main").style.display = "block";
 			}
 		</script>
+		<!-- put after compat to speed FOUC -->
+		<script src="js/main.js"></script>
 	</body>
 </html>
