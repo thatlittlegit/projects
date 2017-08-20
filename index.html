@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8" />
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="index.css" rel="stylesheet" />
+	</head>
+	<body>
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="#">Projects</a>
+			<span class="navbar-text">
+				<a href="/" style="color: #555">Back</a>
+			</span>
+		</nav>
+		<div style="display: none;" id="main">
+		</div>
+		<div id="noscript" style="display: block;">
+			<h1>Gosh darnit!</h1>
+			<h3>Projects requires JavaScript to run.</h3>
+			<p>
+				It seems you have JavaScript disabled. Since Projects is a client-side app, it fetches all of it's data from GitHub and BitBucket via AJAX. In other words, it's all done by you, but you need JavaScript!
+			</p>
+			<h5>Your options are:</h5>
+			<ul>
+				<li>
+					<strong>Enabling JavaScript.</strong> Check if JavaScript is enabled, for example <a href="about:config">about:config</a> in Firefox.
+				</li>
+				<li>
+					<strong>Switch to an X11/Graphical browser.</strong> I know you love Lynx, man, but you gotta have JS!
+				</li>
+				<li>
+					<strong>Check if LibreJS or NoScripts, etc. is enabled.</strong> We aren't yet fully LibreJS-enabled yet, so that might be your problem.
+				</li>
+			</ul>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+		<script>
+			if (Backbone && _ && $) {
+			  document.getElementById("noscript").style.display = "none";
+			  document.getElementById("main").style.display = "block";
+			}
+		</script>
+	</body>
+</html>
