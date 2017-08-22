@@ -42,9 +42,27 @@
 		<script src="https://cdn.rawgit.com/madrobby/zepto/master/src/deferred.js"></script>
 		<script src="https://wzrd.in/bundle/p-series@%5E1.0.0"></script>
 		<script>
-			if ($ && _ && hyperscript && $.Deferred && require) {
-			  document.getElementById("noscript").style.display = "none";
-			  document.getElementById("main").style.display = "block";
+		  document.getElementById("noscript").style.display = "none";
+
+			try {
+			  if ($ && _ && hyperscript && $.Deferred && require) {
+			    document.getElementById("main").style.display = "block";
+			  } else {
+			    throw new Error();
+			  }
+			} catch(e) {
+	    	document.getElementById("main").style.display = "block";
+			  document.getElementById("main").innerHTML = "<h1>Whoops!</h1> A library wasn't loaded. Check your Internet connection.<br /><code>See DevTools for more info.</code>";
+			  window.failedLoad = true;
+
+			  try {
+			    console.log("$: " + $);
+			    console.log("_: " + _);
+			    console.log("h: " + hyperscript);
+			    console.log("r: " + require);
+			  } catch (e) {
+			    console.log("ERROR ------- (this is likely your problem!) " + e.message);
+			  }
 			}
 		</script>
 		<!-- put after compat to speed FOUC -->
