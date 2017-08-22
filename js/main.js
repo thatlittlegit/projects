@@ -28,7 +28,6 @@ $(document).ready(() => {
 
 		window.h = hyperscript;
 		window.pSeries = require('p-series');
-		window.pIf = require('p-if');
 
 		$('#main').html(
 				[
