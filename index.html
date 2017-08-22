@@ -4,6 +4,7 @@
 		<title>Projects</title>
 		<meta charset="utf-8" />
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" async />
 		<link href="index.css" rel="stylesheet" />
 	</head>
 	<body>
@@ -36,13 +37,18 @@
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+		<script src="https://wzrd.in/standalone/hyperscript@%5E2.0.2"></script>
+		<script src="https://cdn.rawgit.com/madrobby/zepto/master/src/callbacks.js"></script>
+		<script src="https://cdn.rawgit.com/madrobby/zepto/master/src/deferred.js"></script>
+		<script src="https://wzrd.in/bundle/p-series@%5E1.0.0"></script>
 		<script>
-			if (_ && $) {
+			if ($ && _ && hyperscript && $.Deferred && require) {
 			  document.getElementById("noscript").style.display = "none";
 			  document.getElementById("main").style.display = "block";
 			}
 		</script>
 		<!-- put after compat to speed FOUC -->
 		<script src="js/main.js"></script>
+		<script src="js/fetch-data.js"></script>
 	</body>
 </html>
