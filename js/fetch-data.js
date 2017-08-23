@@ -28,7 +28,7 @@ function fetchData(dataType) {
 	)).then((data) => {
 		setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
 
-		return _(dataType === 'bb' ? data.values : data).map(repo => (
+		return _(data).map(repo => (
 			repo.values ? repo.values : repo
 		)).map((repo) => {
 			if (dataType === 'bb' && repo.mainbranch === null) {
