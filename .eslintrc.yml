@@ -1,0 +1,33 @@
+env:
+  browser: true
+  jquery: true
+
+plugins:
+  - disable
+
+extends: airbnb-base
+
+rules:
+  indent:
+    - error
+    - tab
+  no-tabs: off
+  global-require: off
+
+globals:
+  _: true
+  $: true
+  h: true
+  hyperscript: true
+  require: true
+  processApis: true
+  processApiData: true
+  setPreview: true
+  pSeries: true
+  $preview: true
+
+settings:
+  eslint-plugin-disable:
+    paths:
+      import:
+        - '*'

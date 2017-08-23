@@ -1,0 +1,26 @@
+{
+  "name": "projects",
+  "version": "0.0.0-nopublish",
+  "description": "A list of my projects.",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thatlittlegit/projects.git"
+  },
+  "author": "thatlittlegit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thatlittlegit/projects/issues"
+  },
+  "homepage": "https://github.com/thatlittlegit/projects#readme",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-disable": "^0.3.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
