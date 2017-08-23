@@ -2,14 +2,20 @@
  * Main CSS file for Projects.
  */
 #noscript,#main {
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: center;
-  margin-top: 2rem;
+		margin-left: 10%;
+		margin-right: 10%;
+		text-align: center;
+		margin-top: 2rem;
 }
 #main #cogs,#main #sneaky-preview {
-  color: #444;
+		color: #444;
 }
 #main #sneaky-preview {
-  font-size: 90%;
+		font-size: 90%;
+}
+
+#main .row .project {
+		border: 1px #666 solid;
+		border-radius: 10px;
+		margin: 0 1rem 1rem 1rem;
 }
