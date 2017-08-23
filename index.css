@@ -19,3 +19,23 @@
 		border-radius: 10px;
 		margin: 0 1rem 1rem 1rem;
 }
+
+#main .row .project.javascript, #main .row .project.nodejs {
+		border-top: 0.25rem #f1E05A solid;
+}
+
+#main .row .project.htmlcss, #main .row .project.html {
+		border-top: 0.25rem #E34C26 solid;
+}
+
+#main .row .project.rust {
+		border-top: 0.25rem #DEA584 solid;
+}
+
+#main .row .project.java {
+		border-top: 0.25rem #b07219 solid;
+}
+
+#main .row .project.xml {
+		border-top: 0.25rem #965046 solid;
+}
