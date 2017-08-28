@@ -2,42 +2,42 @@
  * Main CSS file for Projects.
  */
 #noscript,#main {
-		margin-left: 10%;
-		margin-right: 10%;
-		text-align: center;
-		margin-top: 2rem;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	margin-top: 2rem;
 }
 #main #cogs,#main #sneaky-preview {
-		color: #444;
+	color: #444;
 }
 #main #sneaky-preview {
-		font-size: 90%;
+	font-size: 90%;
 }
 
 #main .row .project {
-		padding: 1rem;
-		text-align: left;
-		border: 1px #666 solid;
-		border-radius: 10px;
-		margin: 0 1rem 1rem 1rem;
+	padding: 1rem;
+	text-align: left;
+	border: 1px #666 solid;
+	border-radius: 10px;
+	margin: 0 1rem 1rem 1rem;
 }
 
 #main .row .project.javascript, #main .row .project.nodejs {
-		border-top: 0.25rem #f1E05A solid;
+	border-top: 0.25rem #f1E05A solid;
 }
 
 #main .row .project.htmlcss, #main .row .project.html {
-		border-top: 0.25rem #E34C26 solid;
+	border-top: 0.25rem #E34C26 solid;
 }
 
 #main .row .project.rust {
-		border-top: 0.25rem #DEA584 solid;
+	border-top: 0.25rem #DEA584 solid;
 }
 
 #main .row .project.java {
-		border-top: 0.25rem #b07219 solid;
+	border-top: 0.25rem #b07219 solid;
 }
 
 #main .row .project.xml {
-		border-top: 0.25rem #965046 solid;
+	border-top: 0.25rem #965046 solid;
 }
