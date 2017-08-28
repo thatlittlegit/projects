@@ -6,19 +6,26 @@ function retrieveBuildData(repos) {
 				data.json()
 			))
 			.then((rawCodecovData) => {
-				if (!rawCodecovData.commits || rawCodecovData.commits.length === 0) {
+				if (rawCodecovData.error) {
+					return 202;
+				} else if (!rawCodecovData.commits || rawCodecovData.commits.length === 0) {
 					return null;
 				}
 
 				setPreview(`Fetched data successfully for ${repo.name}`);
 				return rawCodecovData;
 			})
-			.then(codecovData => (
-				codecovData === null ? { passed: null, coverage: null } : {
+			.then((codecovData) => {
+				if (codecovData === null) {
+					return { passed: null, coverage: null };
+				}	else if (codecovData === 202) {
+					return { bb: true };
+				}
+				return {
 					passed: codecovData.commits[0].ci_passed,
 					coverage: codecovData.commits[0].totals.c,
-				}
-			))
+				};
+			})
 			.then((buildData) => {
 				const retVal = repo;
 				retVal.build = buildData;

@@ -22,6 +22,17 @@
 	margin: 0 1rem 1rem 1rem;
 }
 
+#main .row .project h3 * {
+	margin-right: 0.25rem;
+}
+
+#main .row .project h3 .fa {
+	margin-right: 0.125rem;
+	vertical-align: middle;
+	font-size: 65%;
+	color: #AAA;
+}
+
 #main .row .project.javascript, #main .row .project.nodejs {
 	border-top: 0.25rem #f1E05A solid;
 }
