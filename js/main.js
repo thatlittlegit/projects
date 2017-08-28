@@ -41,5 +41,5 @@ $(document).ready(() => {
 	$preview = $('#main p#sneaky-preview');
 	setPreview('getting started...');
 
-	processApis().then(retrieveBuildData).then(processApiData);
+	processApis().then(retrieveBuildData).then(fetchCustomData).then(processApiData);
 });

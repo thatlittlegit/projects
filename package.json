@@ -4,7 +4,8 @@
   "description": "A list of my projects.",
   "main": "js/main.js",
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint .",
+    "start": "http-server -c-1"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-disable": "^0.3.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "http-server": "~0.10.0"
   }
 }
