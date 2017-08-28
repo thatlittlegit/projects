@@ -24,8 +24,10 @@ globals:
   processApiData: true
   setPreview: true
   pSeries: true
+  pMap: true
   $preview: true
-
+  retrieveBuildData: true
+  
 settings:
   eslint-plugin-disable:
     paths:

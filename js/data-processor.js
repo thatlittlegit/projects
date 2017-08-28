@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 function processApiData(apiData) {
+	console.log('Data', apiData);
+
 	$('body #main').addClass('container').html(_(apiData).map((data) => {
 		setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(`div#${data.name}`, h('h3', data.name), data.description))

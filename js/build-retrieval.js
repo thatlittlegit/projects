@@ -1,18 +1,20 @@
 // eslint-disable-next-line no-unused-vars
 function retrieveBuildData(repos) {
-	$.ajaxSettings.error = () => {};
-
-	return pSeries(_.map(repos, repo => (
-		$.getJSON(`https://simplemirror-ihhtnlywbp.now.sh/${repo.fullname ? repo.fullname : repo.full_name}`)
+	return pMap(repos, repo => (
+		fetch(`https://simplemirror-ihhtnlywbp.now.sh/${repo.fullname ? repo.fullname : repo.full_name}`)
+			.then(data => (
+				data.json()
+			))
 			.then((rawCodecovData) => {
-				if (rawCodecovData.commits.length === 0) {
-					return true;
+				if (!rawCodecovData.commits || rawCodecovData.commits.length === 0) {
+					return null;
 				}
 
+				setPreview(`Fetched data successfully for ${repo.name}`);
 				return rawCodecovData;
 			})
 			.then(codecovData => (
-				codecovData === true ? { passed: null, coverage: null } : {
+				codecovData === null ? { passed: null, coverage: null } : {
 					passed: codecovData.commits[0].ci_passed,
 					coverage: codecovData.commits[0].totals.c,
 				}
@@ -22,5 +24,9 @@ function retrieveBuildData(repos) {
 				retVal.build = buildData;
 				return retVal;
 			})
-	)));
+			.catch((err) => {
+				setPreview(`Ignoring ${err.message}`);
+				return repo;
+			})
+	));
 }

@@ -22,26 +22,28 @@ function requestError(xhr) {
 
 function fetchData(dataType) {
 	setPreview(`fetching data from ${sources[dataType]}...`);
-	return $.getJSON(sources[dataType], { pagelen: 100 }).then(response => (
-		response.values instanceof Array && !(response.values instanceof Function) ?
-			response.values : response
-	)).then((data) => {
-		setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
+	return fetch(sources[dataType], { pagelen: 100 })
+		.then(resp => (
+			resp.json()
+		))
+		.then(response => (
+			response.values instanceof Array && !(response.values instanceof Function) ?
+				response.values : response
+		)).then((data) => {
+			setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
 
-		return _(data).map(repo => (
-			repo.values ? repo.values : repo
-		)).map((repo) => {
-			if (dataType === 'bb' && repo.mainbranch === null) {
-				return null;
-			} else if (repo.values) {
-				return repo.values;
-			}
+			return _(data).map(repo => (
+				repo.values ? repo.values : repo
+			)).map((repo) => {
+				if (dataType === 'bb' && repo.mainbranch === null) {
+					return null;
+				}
 
-			return repo;
-		}).compact()
-			.sort()
-			.value();
-	});
+				return repo;
+			}).compact()
+				.sort()
+				.value();
+		});
 }
 
 // eslint-disable-next-line no-unused-vars
