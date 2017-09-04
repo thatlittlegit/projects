@@ -25,7 +25,9 @@ function processApiData(apiData) {
 		setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(`div#${data.name}`,
 			h('h3',
-				h('a', data.name),
+				h('a', data.name, {
+					href: `${(data.fullname || data.full_name).startsWith('thatlittlegit') ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
+				}),
 				data.build.passed === null ? '' : findIcon(data.build)),
 			data.description))
 			.addClass('col-md')

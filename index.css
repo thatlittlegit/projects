@@ -26,6 +26,11 @@
 	margin-right: 0.25rem;
 }
 
+#main .row .project h3 a {
+	color: #212529;
+	font-weight: bold;
+}
+
 #main .row .project h3 .fa {
 	margin-right: 0.125rem;
 	vertical-align: middle;
