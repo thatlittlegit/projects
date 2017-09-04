@@ -41,7 +41,8 @@ function fetchData(dataType) {
 
 				return repo;
 			}).compact()
-				.sort()
+				.sortBy((repo) => Date.parse(repo.updated_at || repo.updated_on))
+				.reverse()
 				.value();
 		});
 }
