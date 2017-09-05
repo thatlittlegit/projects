@@ -49,6 +49,7 @@
     "html5",
     "mongodb"
   ],
+  "notes-done": true,
   "promising": [
     "javascript",
     "gulp"
@@ -74,10 +75,12 @@
     "nodejs",
     "gulp"
   ],
+  "cssv-done": true,
   "primemytest": [
     "javascript",
     "nodejs"
   ],
+  "primemytest-done": true,
   "wLogger4j": [
     "java"
   ],

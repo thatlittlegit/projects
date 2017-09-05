@@ -39,6 +39,7 @@ function processApiData(apiData) {
 			fetchIcons(data)))
 			.addClass('col-md')
 			.addClass('project')
+			.addClass(data.done ? 'done' : 'nvm')
 		// HACK Assume Java since all my early projects are Java, and those wouldn't have a language.
 			.addClass((data.language === '' ? 'java' : data.language).toLowerCase().replace('/', ''));
 	}).chunk(4).map(data => (

@@ -22,6 +22,11 @@
 	margin: 0 1rem 1rem 1rem;
 }
 
+#main .row .project.done {
+	border-color: #FF0;
+	border-width: 2px;
+}
+
 #main .row .project h3 * {
 	margin-right: 0.25rem;
 }
