@@ -6,7 +6,7 @@ function fetchCustomData(previousData) {
 			_.map(previousData, repo => (
 				data[repo.name] === undefined ? repo : (() => {
 					const newRepo = repo;
-					newRepo.badges = data;
+					newRepo.badges = data[repo.name];
 					return newRepo;
 				})()
 			))

@@ -22,10 +22,8 @@ function processApiData(apiData) {
 	}
 
 	function fetchIcons(repo) {
-		return h('div.badges', _.map(repo.badges, badges => (
-			_.map(badges, badge => (
-				h(`i.devicons.devicons-${badge}${badge === 'nodejs' ? '_small' : ''}`)
-			))
+		return h('div.badges', _.map(repo.badges, badge => (
+			badge.startsWith('fa:') ? h(`i.fa.fa-${badge.split(':')[1]}`) : h(`i.devicons.devicons-${badge}${badge === 'nodejs' ? '_small' : ''}`)
 		)));
 	}
 
