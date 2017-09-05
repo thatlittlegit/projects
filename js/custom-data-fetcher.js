@@ -2,5 +2,13 @@
 function fetchCustomData(previousData) {
 	return fetch('custom.json')
 		.then(resp => (resp.json()))
-		.then(data => (_.merge(previousData, data)));
+		.then(data => (
+			_.map(previousData, repo => (
+				data[repo.name] === undefined ? repo : (() => {
+					const newRepo = repo;
+					newRepo.badges = data;
+					return newRepo;
+				})()
+			))
+		));
 }

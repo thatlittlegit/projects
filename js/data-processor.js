@@ -21,6 +21,14 @@ function processApiData(apiData) {
 		return $element.get();
 	}
 
+	function fetchIcons(repo) {
+		return h('div.badges', _.map(repo.badges, badges => (
+			_.map(badges, badge => (
+				h(`i.devicons.devicons-${badge}${badge === 'nodejs' ? '_small' : ''}`)
+			))
+		)));
+	}
+
 	$('body #main').addClass('container').html(_(apiData).map((data) => {
 		setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(`div#${data.name}`,
@@ -29,7 +37,8 @@ function processApiData(apiData) {
 					href: `${(data.fullname || data.full_name).startsWith('thatlittlegit') ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
 				}),
 				data.build.passed === null ? '' : findIcon(data.build)),
-			data.description))
+			data.description,
+			fetchIcons(data)))
 			.addClass('col-md')
 			.addClass('project')
 		// HACK Assume Java since all my early projects are Java, and those wouldn't have a language.

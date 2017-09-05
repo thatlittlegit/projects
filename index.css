@@ -31,11 +31,15 @@
 	font-weight: bold;
 }
 
-#main .row .project h3 .fa {
+#main .row .project h3 .fa, #main .row .project .badges {
 	margin-right: 0.125rem;
 	vertical-align: middle;
 	font-size: 65%;
 	color: #AAA;
+}
+
+#main .row .project .badges {
+	font-size: 150%;
 }
 
 #main .row .project.javascript, #main .row .project.nodejs {
