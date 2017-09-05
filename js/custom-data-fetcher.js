@@ -7,6 +7,8 @@ function fetchCustomData(previousData) {
 				const newRepo = repo;
 				if (data[`${repo.name}-done`]) {
 					newRepo.done = true;
+				} else if (data[`${repo.name}-abandoned`]) {
+					newRepo.abandoned = true;
 				}
 
 				return data[repo.name] === undefined ? repo : (() => {

@@ -27,6 +27,11 @@
 	border-width: 2px;
 }
 
+#main .row .project.abandoned {
+	border-color: #800;
+	border-width: 2px;
+}
+
 #main .row .project h3 * {
 	margin-right: 0.25rem;
 }

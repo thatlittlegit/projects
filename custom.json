@@ -15,6 +15,7 @@
     "fa:globe",
     "html5"
   ],
+  "gitdat-abandoned": true,
   "betterelement": [
     "javascript",
     "fa:globe"
@@ -69,6 +70,7 @@
     "gulp",
     "html5"
   ],
+  "photorrent-abandoned": true,
   "cssv": [
     "javascript",
     "css3",
@@ -97,6 +99,7 @@
     "javascript",
     "fa:globe"
   ],
+  "nomina-abandoned": true,
   "xml-dtd": [
     "fa:code"
   ],
@@ -111,6 +114,7 @@
   "miningmaster": [
     "java"
   ],
+  "miningmaster-abandoned": true,
   "markcompass": [
     "java",
     "markdown"
