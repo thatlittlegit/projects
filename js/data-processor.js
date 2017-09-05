@@ -43,7 +43,12 @@ function processApiData(apiData) {
 			.addClass(data.abandoned ? 'abandoned' : 'nvm1')
 		// HACK Assume Java since all my early projects are Java, and those wouldn't have a language.
 			.addClass((data.language === '' ? 'java' : data.language).toLowerCase().replace('/', ''));
-	}).chunk(4).map(data => (
+	}).chunk(4).tap((rows) => {
+		while (_.last(rows).length < 4) {
+			_.last(rows).push(h('div.filler-pls-ignore.col-md'));
+		}
+		// eslint-disable-next-line newline-per-chained-call
+	}).map(data => (
 		$(h('div.row')).html(data)
 		// eslint-disable-next-line newline-per-chained-call
 	)).value());
