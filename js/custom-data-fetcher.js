@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-projects.fetchCustomData = (previousData) => {
-	return fetch('custom.json')
+projects.fetchCustomData = previousData => (
+	fetch('custom.json')
 		.then(resp => (resp.status === 200 ? resp : (() => {
 			projects.setPreview(`Ignoring error while fetching ${resp.url} (error ${resp.status}: ${resp.statusText})`);
 			throw new Error();
@@ -21,5 +20,5 @@ projects.fetchCustomData = (previousData) => {
 				})();
 			})
 		))
-		.catch(() => {}); // ignore
-};
+		.catch(() => {}) // ignore
+);

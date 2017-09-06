@@ -37,7 +37,8 @@ projects.fetchData = (dataType) => {
 		.then(response => (
 			response.values instanceof Array && !(response.values instanceof Function) ?
 				response.values : response
-		)).then((data) => {
+		))
+		.then((data) => {
 			projects.setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
 
 			return _(data).map(repo => (
@@ -49,15 +50,15 @@ projects.fetchData = (dataType) => {
 
 				return repo;
 			}).compact()
-				.sortBy((repo) => Date.parse(repo.updated_at || repo.updated_on))
+				.sortBy(repo => (Date.parse(repo.updated_at || repo.updated_on)))
 				.reverse()
 				.value();
 		});
 };
 
 // eslint-disable-next-line no-unused-vars
-projects.processApis = () => {
-	return require('p-series')([
+projects.processApis = () => (
+	require('p-series')([
 		() => projects.fetchData('gh'),
 		() => projects.fetchData('bb'),
 	]).then((dataset) => {
@@ -69,5 +70,5 @@ projects.processApis = () => {
 		))
 			.compact()
 			.value()
-	));
-};
+	))
+);

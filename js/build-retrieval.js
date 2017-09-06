@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-projects.retrieveBuildData = (repos) => {
-	return require('p-map')(repos, repo => (
+projects.retrieveBuildData = repos => (
+	require('p-map')(repos, repo => (
 		fetch(`https://simplemirror-ihhtnlywbp.now.sh/${repo.fullname ? repo.fullname : repo.full_name}`)
 			.then(data => (
 				data.json()
@@ -35,5 +34,5 @@ projects.retrieveBuildData = (repos) => {
 				projects.setPreview(`Ignoring ${err.message}`);
 				return repo;
 			})
-	));
-};
+	))
+);

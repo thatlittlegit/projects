@@ -22,7 +22,6 @@ projects.setPreview = (text) => {
 };
 
 $(document).ready(() => {
-	console.log(projects)
 	if (window.failedLoad) {
 		return;
 	}

@@ -15,12 +15,12 @@ rules:
   global-require: off
 
 globals:
-  _: true
-  $: true
-  h: true
-  hyperscript: true
-  require: true
-  projects: true
+  _: false
+  $: false
+  h: false
+  hyperscript: false
+  require: false
+  projects: false
   
 settings:
   eslint-plugin-disable:
