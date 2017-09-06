@@ -52,4 +52,6 @@ function processApiData(apiData) {
 		$(h('div.row')).html(data)
 		// eslint-disable-next-line newline-per-chained-call
 	)).value());
+
+	$('body nav.license').css('display', 'block');
 }

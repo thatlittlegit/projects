@@ -36,6 +36,12 @@
 				</li>
 			</ul>
 		</div>
+		<nav class="navbar navbar-light bg-light license">
+			<div class="navbar-nav">
+				<a href="https://mit-license.org/" class="nav-item nav-link">Under the Modified BSD License.</a>
+				<a href="https://wapidstyle.bitbucket.io/" class="nav-item nav-link disabled">&copy; 2017 thatlittlegit/wapidstyle.</a>
+			</div>
+		</nav>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 		<script src="https://wzrd.in/standalone/hyperscript@%5E2.0.2"></script>
@@ -45,6 +51,7 @@
 		<script src="https://wzrd.in/bundle/p-map@%5E1.1.1"></script>
 		<script>
 		  document.getElementById("noscript").style.display = "none";
+			document.getElementsByClassName("license")[0].style.display = "none";
 
 			try {
 			  if ($ && _ && hyperscript && $.Deferred && require) {
