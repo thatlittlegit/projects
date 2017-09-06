@@ -17,19 +17,17 @@ if (!i) throw new Error();
 	$('#main').html('<h1>error!</h1>Some features are not supported n your browser. Please upgrade your browser.<pre>' + e.stack + '</pre>');
 }
 
-let $preview;
+projects.setPreview = (text) => {
+	$(projects.$preview).html(text || '?');
+};
 
-function setPreview(text) {
-	$($preview).html(text || '?');
-}
 $(document).ready(() => {
+	console.log(projects)
 	if (window.failedLoad) {
 		return;
 	}
 
 	window.h = hyperscript;
-	window.pSeries = require('p-series');
-	window.pMap = require('p-map');
 
 	$('#main').html(
 		[
@@ -38,8 +36,11 @@ $(document).ready(() => {
 				'getting started'),
 		]);
 
-	$preview = $('#main p#sneaky-preview');
-	setPreview('getting started...');
+	projects.$preview = $('#main p#sneaky-preview');
+	projects.setPreview('getting started...');
 
-	processApis().then(retrieveBuildData).then(fetchCustomData).then(processApiData);
+	projects.processApis()
+		.then(projects.retrieveBuildData)
+		.then(projects.fetchCustomData)
+		.then(projects.processApiData);
 });

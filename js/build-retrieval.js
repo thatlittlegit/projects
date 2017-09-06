@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-function retrieveBuildData(repos) {
-	return pMap(repos, repo => (
+projects.retrieveBuildData = (repos) => {
+	return require('p-map')(repos, repo => (
 		fetch(`https://simplemirror-ihhtnlywbp.now.sh/${repo.fullname ? repo.fullname : repo.full_name}`)
 			.then(data => (
 				data.json()
@@ -12,7 +12,7 @@ function retrieveBuildData(repos) {
 					return null;
 				}
 
-				setPreview(`Fetched data successfully for ${repo.name}`);
+				projects.setPreview(`Fetched data successfully for ${repo.name}`);
 				return rawCodecovData;
 			})
 			.then((codecovData) => {
@@ -32,8 +32,8 @@ function retrieveBuildData(repos) {
 				return retVal;
 			})
 			.catch((err) => {
-				setPreview(`Ignoring ${err.message}`);
+				projects.setPreview(`Ignoring ${err.message}`);
 				return repo;
 			})
 	));
-}
+};

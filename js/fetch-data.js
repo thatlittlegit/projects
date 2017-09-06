@@ -3,8 +3,8 @@ const sources = {
 	bb: 'http://api.bitbucket.org/2.0/repositories/wapidstyle?pagelen=100',
 };
 
-function requestError(xhr) {
-	$preview.html([
+projects.requestError = (xhr) => {
+	projects.$preview.html([
 		h('strong', 'error'),
 		h('br'),
 		`while fetching ${xhr.responseURL} (error ${xhr.status} ${xhr.statusText})`,
@@ -18,19 +18,27 @@ function requestError(xhr) {
 	$('#main #sneaky-preview #devinfo').css('color', '#000')
 		.css('font-family', 'monospace');
 	$('#main #cogs').removeClass('fa-spin').css('color', '#C33');
-}
+};
 
-function fetchData(dataType) {
-	setPreview(`fetching data from ${sources[dataType]}...`);
+projects.fetchData = (dataType) => {
+	projects.setPreview(`fetching data from ${sources[dataType]}...`);
 	return fetch(sources[dataType], { pagelen: 100 })
+		.then(resp => (resp.status === 200 ? resp : projects.requestError({
+			responseURL: resp.url,
+			status: resp.status,
+			statusText: resp.statusText,
+			resp,
+		})))
 		.then(resp => (
-			resp.json()
+			resp === undefined ? (() => {
+				throw new Error('Request failed!');
+			})() : resp.json()
 		))
 		.then(response => (
 			response.values instanceof Array && !(response.values instanceof Function) ?
 				response.values : response
 		)).then((data) => {
-			setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
+			projects.setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
 
 			return _(data).map(repo => (
 				repo.values ? repo.values : repo
@@ -45,16 +53,15 @@ function fetchData(dataType) {
 				.reverse()
 				.value();
 		});
-}
+};
 
 // eslint-disable-next-line no-unused-vars
-function processApis() {
-	$.ajaxSettings.error = requestError;
-	return pSeries([
-		() => fetchData('gh'),
-		() => fetchData('bb'),
+projects.processApis = () => {
+	return require('p-series')([
+		() => projects.fetchData('gh'),
+		() => projects.fetchData('bb'),
 	]).then((dataset) => {
-		setPreview(`data pool is currently ${JSON.stringify(dataset).length} bytes long`);
+		projects.setPreview(`data pool is currently ${JSON.stringify(dataset).length} bytes long`);
 		return dataset;
 	}).then(repoSet => (
 		_(repoSet).flatten().uniqBy('name').map(repo => (
@@ -63,4 +70,4 @@ function processApis() {
 			.compact()
 			.value()
 	));
-}
+};

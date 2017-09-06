@@ -45,8 +45,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 		<script src="https://wzrd.in/standalone/hyperscript@%5E2.0.2"></script>
-		<script src="https://cdn.rawgit.com/madrobby/zepto/master/src/callbacks.js"></script>
-		<script src="https://cdn.rawgit.com/madrobby/zepto/master/src/deferred.js"></script>
 		<script src="https://wzrd.in/bundle/p-series@%5E1.0.0"></script>
 		<script src="https://wzrd.in/bundle/p-map@%5E1.1.1"></script>
 		<script>
@@ -54,7 +52,7 @@
 			document.getElementsByClassName("license")[0].style.display = "none";
 
 			try {
-			  if ($ && _ && hyperscript && $.Deferred && require) {
+			  if ($ && _ && hyperscript && require) {
 			    document.getElementById("main").style.display = "block";
 			  } else {
 			    throw new Error();
@@ -73,12 +71,14 @@
 			    console.log("ERROR ------- (this is likely your problem!) " + e.message);
 			  }
 			}
+
+			var projects = {};
 		</script>
 		<!-- put after compat to speed FOUC -->
+		<script src="js/main.js"></script>
 		<script src="js/custom-data-fetcher.js"></script>
 		<script src="js/build-retrieval.js"></script>
 		<script src="js/data-processor.js"></script>
 		<script src="js/fetch-data.js"></script>
-		<script src="js/main.js"></script>
 	</body>
 </html>

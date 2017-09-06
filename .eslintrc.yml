@@ -20,13 +20,7 @@ globals:
   h: true
   hyperscript: true
   require: true
-  processApis: true
-  processApiData: true
-  setPreview: true
-  pSeries: true
-  pMap: true
-  $preview: true
-  retrieveBuildData: true
+  projects: true
   
 settings:
   eslint-plugin-disable:

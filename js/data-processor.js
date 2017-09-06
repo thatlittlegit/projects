@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-function processApiData(apiData) {
+projects.processApiData = (apiData) => {
 	// eslint-disable-next-line no-console
 	console.log('Data', apiData);
 
@@ -28,7 +28,7 @@ function processApiData(apiData) {
 	}
 
 	$('body #main').addClass('container').html(_(apiData).map((data) => {
-		setPreview(`processing ${(data.fullname || data.full_name)}`);
+		projects.setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(`div#${data.name}`,
 			h('h3',
 				h('a', data.name, {
@@ -54,4 +54,4 @@ function processApiData(apiData) {
 	)).value());
 
 	$('body nav.license').css('display', 'block');
-}
+};
