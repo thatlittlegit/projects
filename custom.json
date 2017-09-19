@@ -21,6 +21,7 @@
     "javascript",
     "fa:globe"
   ],
+  "betterelement-done": true,
   "wapi": [
     "java",
     "javascript",
@@ -35,6 +36,7 @@
     "fa:globe",
     "html5"
   ],
+  "nope.js-done": true,
   "oned": [
     "javascript",
     "nodejs",
