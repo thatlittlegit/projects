@@ -1,4 +1,9 @@
 {
+  "gistmgr": [
+    "terminal_badge",
+    "github"
+  ],
+  "gistmgr-done": true,
   "edunet": [
     "nodejs",
     "fa:globe",

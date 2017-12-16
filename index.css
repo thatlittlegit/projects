@@ -78,3 +78,7 @@
 #main .row .project.xml {
 	border-top: 0.25rem #965046 solid;
 }
+
+#main .row .project.shell {
+	border-top: 0.25rem #89E051 solid;
+}
