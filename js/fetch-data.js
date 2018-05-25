@@ -1,6 +1,6 @@
 const sources = {
-	gh: 'http://api.github.com/users/thatlittlegit/repos',
-	bb: 'http://api.bitbucket.org/2.0/repositories/wapidstyle?pagelen=100',
+	gh: 'https://api.github.com/users/thatlittlegit/repos',
+	bb: 'https://api.bitbucket.org/2.0/repositories/wapidstyle?pagelen=100',
 };
 
 projects.requestError = (xhr) => {

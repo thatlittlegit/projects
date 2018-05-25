@@ -28,11 +28,13 @@ projects.processApiData = (apiData) => {
 	}
 
 	$('body #main').addClass('container').html(_(apiData).map((data) => {
+		data.github = (data.fullname || data.full_name).startsWith('thatlittlegit');
+
 		projects.setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(`div#${data.name}`,
 			h('h3',
 				h('a', data.name, {
-					href: `${(data.fullname || data.full_name).startsWith('thatlittlegit') ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
+					href: `${data.github ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
 				}),
 				data.build.passed === null ? '' : findIcon(data.build)),
 			data.description,
@@ -40,9 +42,9 @@ projects.processApiData = (apiData) => {
 			.addClass('col-md')
 			.addClass('project')
 			.addClass(data.done ? 'done' : 'nvm')
-			.addClass(data.abandoned ? 'abandoned' : 'nvm1')
+			.addClass(data.abandoned || data.archived ? 'abandoned' : 'nvm1')
 		// HACK Assume Java since all my early projects are Java, and those wouldn't have a language.
-			.addClass((data.language === '' ? 'java' : data.language).toLowerCase().replace('/', ''));
+			.addClass(((data.github && data.language === null) ? '' : (!data.github && data.language === '') ? 'java' : data.language).toLowerCase().replace('/', ''));
 	}).chunk(4).tap((rows) => {
 		while (_.last(rows).length < 4) {
 			_.last(rows).push(h('div.filler-pls-ignore.col-md'));
