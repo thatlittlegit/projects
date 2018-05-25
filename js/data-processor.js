@@ -37,7 +37,7 @@ projects.processApiData = (apiData) => {
 					href: `${data.github ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
 				}),
 				data.build.passed === null ? '' : findIcon(data.build)),
-			data.description,
+			require('emoji-shorts').toRich(data.description),
 			fetchIcons(data)))
 			.addClass('col-md')
 			.addClass('project')
