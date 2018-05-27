@@ -19,10 +19,10 @@
   "homepage": "https://github.com/thatlittlegit/projects#readme",
   "private": true,
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-disable": "^0.3.0",
-    "eslint-plugin-import": "^2.7.0",
-    "http-server": "~0.10.0"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-disable": "^1.0.1",
+    "eslint-plugin-import": "^2.12.0",
+    "http-server": "~0.11.1"
   }
 }
