@@ -28,12 +28,13 @@ $(document).ready(() => {
 
 	window.h = hyperscript;
 
-	$('#main').html(
-		[
-			h('i.fa.fa-cog.fa-spin.fa-4x#cogs'),
-			h('p#sneaky-preview',
-				'getting started'),
-		]);
+	$('#main').html([
+		h('i.fa.fa-cog.fa-spin.fa-4x#cogs'),
+		h(
+			'p#sneaky-preview',
+			'getting started',
+		),
+	]);
 
 	projects.$preview = $('#main p#sneaky-preview');
 	projects.setPreview('getting started...');

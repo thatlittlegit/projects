@@ -8,12 +8,16 @@ projects.requestError = (xhr) => {
 		h('strong', 'error'),
 		h('br'),
 		`while fetching ${xhr.responseURL} (error ${xhr.status} ${xhr.statusText})`,
-		h('details#devinfo',
-			h('summary',
-				'developer info'),
+		h(
+			'details#devinfo',
+			h(
+				'summary',
+				'developer info',
+			),
 			h('pre', $.map(xhr, (value, key) => (
 				`${key}: ${String(value).split('{')[0]}\n`
-			))))])
+			))),
+		)])
 		.css('color', '#E33');
 	$('#main #sneaky-preview #devinfo').css('color', '#000')
 		.css('font-family', 'monospace');
@@ -43,13 +47,13 @@ projects.fetchData = (dataType) => {
 
 			return _(data).map(repo => (
 				repo.values ? repo.values : repo
-			)).map((repo) => {
-				if (dataType === 'bb' && repo.mainbranch === null) {
-					return null;
-				}
-
-				return repo;
-			}).compact()
+			)).map(repo => dataType === 'bb' && repo.mainbranch === null ? null : repo) // eslint-disable-line no-confusing-arrow
+				.compact()
+				.map((repo) => {
+					const newRepo = repo;
+					newRepo.github = typeof repo.full_name !== 'undefined';
+					return newRepo;
+				})
 				.sortBy(repo => (Date.parse(repo.updated_at || repo.updated_on)))
 				.reverse()
 				.value();

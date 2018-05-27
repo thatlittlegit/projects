@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 projects.processApiData = (apiData) => {
 	// eslint-disable-next-line no-console
 	console.log('Data', apiData);
@@ -28,23 +27,32 @@ projects.processApiData = (apiData) => {
 	}
 
 	$('body #main').addClass('container').html(_(apiData).map((data) => {
-		data.github = (data.fullname || data.full_name).startsWith('thatlittlegit');
-
 		projects.setPreview(`processing ${(data.fullname || data.full_name)}`);
-		return $(h(`div#${data.name}`,
-			h('h3',
+		return $(h(
+			`div#${data.name}`,
+			h(
+				'h3',
 				h('a', data.name, {
 					href: `${data.github ? 'https://github.com/' : 'https://bitbucket.org/'}${data.fullname || data.full_name}`,
 				}),
-				data.build.passed === null ? '' : findIcon(data.build)),
+				data.build.passed === null ? '' : findIcon(data.build),
+			),
 			require('emoji-shorts').toRich(data.description),
-			fetchIcons(data)))
+			fetchIcons(data),
+		))
 			.addClass('col-md')
 			.addClass('project')
 			.addClass(data.done ? 'done' : 'nvm')
 			.addClass(data.abandoned || data.archived ? 'abandoned' : 'nvm1')
 		// HACK Assume Java since all my early projects are Java, and those wouldn't have a language.
-			.addClass(((data.github && data.language === null) ? '' : (!data.github && data.language === '') ? 'java' : data.language).toLowerCase().replace('/', ''));
+			.addClass((() => {
+				if (data.github && data.language === null) {
+					return '';
+				} else if (!data.github && data.language === '') {
+					return 'java';
+				}
+				return data.language;
+			})().toLowerCase().replace('/', ''));
 	}).chunk(4).tap((rows) => {
 		while (_.last(rows).length < 4) {
 			_.last(rows).push(h('div.filler-pls-ignore.col-md'));
