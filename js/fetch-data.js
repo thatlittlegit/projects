@@ -3,7 +3,7 @@ const sources = {
 	bb: 'https://api.bitbucket.org/2.0/repositories/wapidstyle?pagelen=100',
 };
 
-projects.requestError = (xhr) => {
+projects.requestError = xhr => {
 	projects.$preview.html([
 		h('strong', 'error'),
 		h('br'),
@@ -17,16 +17,17 @@ projects.requestError = (xhr) => {
 			h('pre', $.map(xhr, (value, key) => (
 				`${key}: ${String(value).split('{')[0]}\n`
 			))),
-		)])
+		),
+	])
 		.css('color', '#E33');
 	$('#main #sneaky-preview #devinfo').css('color', '#000')
 		.css('font-family', 'monospace');
 	$('#main #cogs').removeClass('fa-spin').css('color', '#C33');
 };
 
-projects.fetchData = (dataType) => {
+projects.fetchData = dataType => {
 	projects.setPreview(`fetching data from ${sources[dataType]}...`);
-	return fetch(sources[dataType], { pagelen: 100 })
+	return fetch(sources[dataType], {pagelen: 100})
 		.then(resp => (resp.status === 200 ? resp : projects.requestError({
 			responseURL: resp.url,
 			status: resp.status,
@@ -39,17 +40,17 @@ projects.fetchData = (dataType) => {
 			})() : resp.json()
 		))
 		.then(response => (
-			response.values instanceof Array && !(response.values instanceof Function) ?
+			Array.isArray(response.values) && !(response.values instanceof Function) ?
 				response.values : response
 		))
-		.then((data) => {
+		.then(data => {
 			projects.setPreview(`recieved ${JSON.stringify(data).length} bytes of data from ${sources[dataType]}`);
 
 			return _(data).map(repo => (
 				repo.values ? repo.values : repo
-			)).map(repo => dataType === 'bb' && repo.mainbranch === null ? null : repo) // eslint-disable-line no-confusing-arrow
+			)).map(repo => dataType === 'bb' && repo.mainbranch === null ? null : repo)
 				.compact()
-				.map((repo) => {
+				.map(repo => {
 					const newRepo = repo;
 					newRepo.github = typeof repo.full_name !== 'undefined';
 					return newRepo;
@@ -60,12 +61,11 @@ projects.fetchData = (dataType) => {
 		});
 };
 
-// eslint-disable-next-line no-unused-vars
 projects.processApis = () => (
 	require('p-series')([
 		() => projects.fetchData('gh'),
 		() => projects.fetchData('bb'),
-	]).then((dataset) => {
+	]).then(dataset => {
 		projects.setPreview(`data pool is currently ${JSON.stringify(dataset).length} bytes long`);
 		return dataset;
 	}).then(repoSet => (

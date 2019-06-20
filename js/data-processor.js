@@ -1,5 +1,4 @@
-projects.processApiData = (apiData) => {
-	// eslint-disable-next-line no-console
+projects.processApiData = apiData => {
 	console.log('Data', apiData);
 
 	function findIcon(build) {
@@ -9,7 +8,9 @@ projects.processApiData = (apiData) => {
 			$($element).addClass('fa-bitbucket')
 				.attr('title', 'BitBucket projects can\'t be fetched by Codecov (where I get the build information)');
 			return $element.get();
-		} else if (build.passed === true) {
+		}
+
+		if (build.passed === true) {
 			$($element).addClass('fa-check')
 				.attr('title', `Build passed with ${build.coverage}% coverage`);
 			return $element.get();
@@ -26,7 +27,7 @@ projects.processApiData = (apiData) => {
 		)));
 	}
 
-	$('body #main').addClass('container').html(_(apiData).map((data) => {
+	$('body #main').addClass('container').html(_(apiData).map(data => {
 		projects.setPreview(`processing ${(data.fullname || data.full_name)}`);
 		return $(h(
 			`div#${data.name}`,
@@ -48,19 +49,20 @@ projects.processApiData = (apiData) => {
 			.addClass((() => {
 				if (data.github && data.language === null) {
 					return '';
-				} else if (!data.github && data.language === '') {
+				}
+
+				if (!data.github && data.language === '') {
 					return 'java';
 				}
+
 				return data.language;
 			})().toLowerCase().replace('/', ''));
-	}).chunk(4).tap((rows) => {
+	}).chunk(4).tap(rows => {
 		while (_.last(rows).length < 4) {
 			_.last(rows).push(h('div.filler-pls-ignore.col-md'));
 		}
-		// eslint-disable-next-line newline-per-chained-call
 	}).map(data => (
 		$(h('div.row')).html(data)
-		// eslint-disable-next-line newline-per-chained-call
 	)).value());
 
 	$('body nav.license').css('display', 'block');

@@ -11,13 +11,16 @@ try {
 
 if (!i) throw new Error();
 `);
-} catch (e) {
+} catch (error) {
 	window.failedLoad = true;
-	// eslint-disable-next-line prefer-template
-	$('#main').html('<h1>error!</h1>Some features are not supported n your browser. Please upgrade your browser.<pre>' + e.stack + '</pre>');
+	$('#main').html(`<h1>error!</h1>
+<p>Some features are not supported n your browser. Please upgrade your browser.</p>
+<pre>
+${error.stack}
+</pre>`);
 }
 
-projects.setPreview = (text) => {
+projects.setPreview = text => {
 	$(projects.$preview).html(text || '?');
 };
 
