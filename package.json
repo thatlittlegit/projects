@@ -19,7 +19,7 @@
   "homepage": "https://github.com/thatlittlegit/projects#readme",
   "private": true,
   "devDependencies": {
-    "http-server": "~0.11.1",
+    "http-server": "^0.11.1",
     "xo": "^0.24.0"
   },
   "xo": {
